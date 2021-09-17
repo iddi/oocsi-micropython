@@ -2,6 +2,7 @@
 # This software is released under the MIT License.
 # http://opensource.org/licenses/mit-license.php
 
+import network
 from oocsi import OOCSI
 import time
 from random import random
