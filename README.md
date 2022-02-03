@@ -18,24 +18,24 @@ To get started with MicroPython on your board, you need to go through three easy
 
 The entire process below is also explained in more detail on the official [MicroPython site](https://docs.micropython.org/en/latest/esp32/tutorial/intro.html). The process is very similar for other baord than the ESP32 that we will use in this example. Ok, let's go! 💪
 
-Install the `esptools` Python package on your system:
+Install the `esptool` Python package on your system:
 
 ````bash
 # Python 2.7
-pip install esptools
+pip install esptool
 
 # Python3
-pip3 install esptools
+pip3 install esptool
 ````
-Now you can flash the firmware on the board. First download a firmware file for your board. For example, assuming an ESP32 board, you select [esp32-20210623-v1.16.bin](https://micropython.org/resources/firmware/esp32-20210623-v1.16.bin) on the [MicroPython download page](https://micropython.org/download/esp32/). With `esptools` and your ESP32 connected to a USB port, you can now flash the firmware directly on the board - in two steps:
+Now you can flash the firmware on the board. First download a firmware file for your board. For example, assuming an ESP32 board, you select [esp32-20210623-v1.16.bin](https://micropython.org/resources/firmware/esp32-20210623-v1.16.bin) on the [MicroPython download page](https://micropython.org/download/esp32/). With `esptool` and your ESP32 connected to a USB port, you can now flash the firmware directly on the board - in two steps:
 
 1. Erase the flash
 
 ````bash
-# use esptools directly
-esptool --port /dev/tty.usbserial-0001 erase_flash
+# use esptool directly
+esptool.py --port /dev/tty.usbserial-0001 erase_flash
 # or call with python3 interpreter
-python3 -m esptool --port /dev/tty.usbserial-0001 erase_flash
+python3 -m esptool.py --port /dev/tty.usbserial-0001 erase_flash
 
 ````
 
@@ -43,12 +43,12 @@ python3 -m esptool --port /dev/tty.usbserial-0001 erase_flash
 
 ````bash
 # use esptools directly
-esptool --port /dev/tty.usbserial-0001 --chip esp32 write_flash -z 0x1000 esp32-20210623-v1.16.bin
+esptool.py --port /dev/tty.usbserial-0001 --chip esp32 write_flash -z 0x1000 esp32-20210623-v1.16.bin
 # or call with python3 interpreter
-python3 -m esptool --port /dev/tty.usbserial-0001 --chip esp32 write_flash -z 0x1000 esp32-20210623-v1.16.bin
+python3 -m esptool.py --port /dev/tty.usbserial-0001 --chip esp32 write_flash -z 0x1000 esp32-20210623-v1.16.bin
 ````
 
-The `--port` command line argument selects the USB port that your ESP32 is connected to. The example above is for macOS and should work imilarly on Linux. For Windows, you might need to figure out which COM port your ESP32 is connected to and adapt the command: `--port COM4`.
+The `--port` command line argument selects the USB port that your ESP32 is connected to. The example above is for macOS and should work similarly on Linux. For Windows, you might need to figure out which COM port your ESP32 is connected to and adapt the command: `--port COM4`.
 
 The `--chip` command line argument selects the board type. So, if you are not using an ESP32, but an ESP8266 or else, you would need to adapt this part in the command.
 
@@ -109,6 +109,14 @@ First, install the tool:
 ````bash
 pip3 install adafruit-ampy
 ````
+
+Test if the tool is correctly installed and can be found by your computer:
+
+````bash
+ampy --help
+````
+
+If this returns an error, it can help to use an anaconda prompt terminal.
 
 #### List files
 
