@@ -22,8 +22,7 @@ class OOCSI:
             while "#" in handle:
                 handle = handle.replace("#", str(random.randrange(10)), 1)
             self.handle = handle
-
-            
+        
         self.receivers = {self.handle: [callback]}
         self.calls = {}
         self.services = {}
