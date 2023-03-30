@@ -20,8 +20,7 @@ class OOCSI:
             self.handle = "OOCSIClient_" + str(random.randint(100000, 1000000))
         else:
             while "#" in handle:
-                num = random.randrange(10)
-                handle = handle.replace("#", str(num), 1)
+                handle = handle.replace("#", str(random.randrange(10)), 1)
             self.handle = handle
 
             
