@@ -17,10 +17,12 @@ class OOCSI:
     
     def __init__(self, handle=None, host='localhost', port=4444, callback=None):
         if handle is None or len(handle.strip()) == 0:
-            self.handle = "OOCSIClient_" + str(random.randint(100000, 1000000));
+            self.handle = "OOCSIClient_" + str(random.randint(100000, 1000000))
         else:
+            while "#" in handle:
+                handle = handle.replace("#", str(random.randrange(10)), 1)
             self.handle = handle
-            
+        
         self.receivers = {self.handle: [callback]}
         self.calls = {}
         self.services = {}
