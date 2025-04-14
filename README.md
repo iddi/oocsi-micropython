@@ -169,7 +169,7 @@ The `main.py` file is a simple Python file that usually starts with importing pa
 
 ### OOCSI for MicroPython
 
-Ok, finally, how to get started with OOCSO for MicroPython on a microprocessor board. This way, please!
+Ok, finally, how to get started with OOCSI for MicroPython on a microprocessor board. This way, please!
 
 #### Upload the OOCSI library
 
